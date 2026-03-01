@@ -10,10 +10,6 @@
 
 <style>
 
-/* ========================= */
-/*         BACKGROUND        */
-/* ========================= */
-
 body {
     margin: 0;
     height: 100vh;
@@ -36,9 +32,13 @@ body::before {
     transform: scale(1.1) rotate(-2deg);
 }
 
-/* ========================= */
-/*      WARP ANIMATION       */
-/* ========================= */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 50, 0.5);
+    z-index: -1;
+}
 
 @keyframes slide {
 
@@ -67,10 +67,6 @@ body::before {
     }
 }
 
-/* ========================= */
-/*        GLOW NAVBAR        */
-/* ========================= */
-
 .navbar {
     background: rgba(20, 40, 70, 0.6);
     backdrop-filter: blur(12px);
@@ -84,10 +80,6 @@ body::before {
         0 0 8px rgba(30, 146, 255, 0.4),
         0 0 20px rgba(30, 109, 255, 0.5);
 }
-
-/* ========================= */
-/*         NAV LOGO          */
-/* ========================= */
 
 .nav-logo {
     width: 45px;
@@ -105,10 +97,6 @@ body::before {
         0 0 10px rgba(30,139,255,0.9),
         0 0 25px rgba(30,139,255,0.7);
 }
-
-/* ========================= */
-/*        NAV LINKS          */
-/* ========================= */
 
 .nav-left {
     display: flex;
@@ -135,10 +123,6 @@ body::before {
         0 0 20px rgba(30, 109, 255, 0.8);
 }
 
-/* ========================= */
-/*       NAV CENTER TEXT     */
-/* ========================= */
-
 .nav-center {
     justify-self: center;
     font-size: 24px;
@@ -150,10 +134,6 @@ body::before {
         0 0 18px rgba(30,113,255,0.8);
 }
 
-/* ========================= */
-/*        NAV BUTTON         */
-/* ========================= */
-
 .nav-right {
     display: flex;
     align-items: center;
@@ -164,11 +144,40 @@ body::before {
 .nav-right a {
     color: white;
     text-decoration: none;
+    transition: 0.3s ease;
+}
+.footer {
+    background: linear-gradient(
+        to top,
+        rgba(20, 40, 70, 0.95),
+        rgba(20, 40, 70, 0.75)
+    );
+    backdrop-filter: blur(15px);
+    padding: 15px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    box-shadow:
+        0 -5px 15px rgba(30, 128, 255, 0.6),
+        0 -10px 30px rgba(30, 146, 255, 0.4);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 8px rgba(30,116,255,0.6),
+        0 0 18px rgba(30,113,255,0.8);
+}
+
+.book-now:hover {
+    text-shadow:
+        0 0 8px rgba(30,139,255,0.9),
+        0 0 15px rgba(30,139,255,0.8);
 }
 
 .nav-right .create-navbar {
     padding: 8px 14px;
-    background: linear-gradient(135deg, #6683d9, #aedcf8);
+    background: linear-gradient(135deg, #71b5f4, #64c6ff);
     color: white;
     border-radius: 8px;
     border: none;
@@ -185,6 +194,76 @@ body::before {
         0 0 25px rgba(30,139,255,0.7);
 }
 
+.futuristic-box {
+    border-radius: 20px;
+    background: rgba(20,40,70,0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    box-shadow:
+        0 0 15px rgba(0, 240, 255, 0.4),
+        inset 0 0 20px rgba(0, 240, 255, 0.2);
+    color: white;
+    animation: glowPulse 3s infinite alternate;
+}
+
+
+@keyframes glowPulse {
+    from {
+        box-shadow:
+            0 0 10px rgba(0, 132, 255, 0.3),
+            inset 0 0 10px rgba(0, 128, 255, 0.2);
+    }
+    to {
+        box-shadow:
+            0 0 25px rgba(0, 102, 255, 0.8),
+            inset 0 0 25px rgba(0, 94, 255, 0.6);
+    }
+}
+
+kbd {
+    background: black;
+    color: #005eff;
+    border: 1px solid #0062ff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-shadow: 0 0 8px #0062ff;
+}
+
+.highlight {
+    color: #007bff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #0048ff;
+}
+
+.instructions-btn {
+    width: auto;
+    padding: 10px 18px;
+    margin-top: 10px;
+
+    background: #71b5f4;
+    color: #0f3f75;
+
+    border: none;
+    border-radius: 5px;
+
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.instructions-btn:hover {
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 10px #488db5,
+        0 0 20px #437ba6,
+        0 0 35px rgba(19, 95, 167, 0.7);
+}
+
 </style>
 </head>
 
@@ -193,12 +272,11 @@ body::before {
 <div class="navbar">
     <div class="nav-left">
 
-        <!-- ✅ LOGO ADDED HERE -->
         <img src="MetroFarePH.jpeg" class="nav-logo">
 
-        <a href="#home.html">Home</a>
-        <a href="#farematrix.html">Fare Matrix</a>
-        <a href="#schedule.html">Schedule</a>
+        <a href="home.html">Home</a>
+        <a href="farematrix.html">Fare Matrix</a>
+        <a href="schedule.html">Schedule</a>
     </div>
 
     <div class="nav-center">
@@ -206,10 +284,96 @@ body::before {
     </div>
 
     <div class="nav-right">
-        <a href="#">Book Now</a>
-        <button class="create-navbar">Create Account</button>
+        <a href="booknow.html" class="book-now">Book Now</a>
+        <a href="registration.html" class="create-navbar">Create Account</a>
     </div>
 </div>
 
+<br>
+
+<div class="container text-center text-white mt-5">
+
+    <div class="p-5 rounded"
+        style="background: rgba(20,40,70,0.6);
+               backdrop-filter: blur(15px);
+               box-shadow: 0 0 20px rgba(30,139,255,0.6);
+               border: 1px solid rgba(255,255,255,0.2);">
+
+        <!-- Logo -->
+        <img src="MetroFarePH.jpeg"
+             style="width:100px; border-radius:50%;
+                    box-shadow:0 0 20px rgba(30,139,255,0.8);">
+
+        <h2 class="mt-3 fw-bold"
+            style="text-shadow:0 0 10px rgba(30,139,255,0.9);">
+            Welcome to MetroFare PH
+        </h2>
+
+        <p class="mt-3 fs-5">
+            Your smart guide for metro fares, schedules,
+            and booking assistance.
+        </p>
+
+        <hr style="border:1px solid rgba(255,255,255,0.3);">
+
+        <button class="instructions-btn mt-2"
+        onclick="showInstructions()">
+            Show Instructions
+        </button>
+
+<div id="instructions"
+     class="mt-4 p-4 futuristic-box"
+     style="display:none;">
+
+    <h5 class="mb-3 fw-bold text-uppercase">
+        System Guide <span style="color:#a0d1ff;">[Active]</span>
+    </h5>
+
+    <p>
+        <kbd>1</kbd> Click <span class="highlight">Fare Matrix</span> to view prices
+    </p>
+
+    <p>
+        <kbd>2</kbd> Open <span class="highlight">Schedule</span> for train times
+    </p>
+
+    <p>
+        <kbd>3</kbd> Create an account to unlock booking
+    </p>
+
+    <p>
+        <kbd>4</kbd> Press <span class="highlight">Book Now</span> to reserve
+    </p>
+
+</div>
+
+    </div>
+</div>
+
+<br>
+
+<div style="height:160px;"></div>
+
+<div class="footer">
+<p>Kirsten Heart D. Imam & Gabrielle Antoinette De Jesus | 9 - Sapphire 2026</p>
+</div>
+
+<script>
+    function showInstructions() {
+        var x = document.getElementById("instructions");
+    
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+    </script>
+
 </body>
 </html>
+
+<!-- Sources: https://youtu.be/6jlIFGQSJwA?si=PyOvHSnq647W555m -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/transform -->
+<!--https://www.florin-pop.com/blog/2019/03/css-pulse-effect/-->
+<!--https://www.w3schools.com/tags/tag_td.asp-->
